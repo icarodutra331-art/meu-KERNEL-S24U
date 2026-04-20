@@ -1,14 +1,19 @@
-name: BUILD KERNEL WILD
+name: BUILD KERNEL NEXT
 on:
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
-  call-wild-build:
-    uses: WildKernels/GKI_KernelSU_SUSFS/.github/workflows/build.yml@main
-    with:
-      kernel_version: '6.6.50-android15-2024-11'
-      feature_set: 'KSUN,SUSFS,BBG'
-      ksu_commit: 'next'
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Kernel
+        uses: tiann/KernelSU-Action@main
+        with:
+          kernel-version: '6.6'
+          ksu-version: 'next'
+          additional-kconfig: |
+            CONFIG_LOCALVERSION="-Samsung-S24U"
+            CONFIG_KSU_SUSFS=y
+            CONFIG_SUSFS_SPOOF_PROTO=y
