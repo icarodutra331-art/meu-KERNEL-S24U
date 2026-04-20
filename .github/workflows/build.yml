@@ -4,16 +4,11 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Build Kernel
-        uses: xiaoleGun/KernelSU_Action@main
-        with:
-          kernel-version: '6.6'
-          ksu-version: 'next'
-          additional-kconfig: |
-            CONFIG_LOCALVERSION="-Samsung-S24U"
-            CONFIG_KSU_SUSFS=y
-            CONFIG_SUSFS_SPOOF_PROTO=y
+    uses: xiaoleGun/KernelSU_Action/.github/workflows/build.yml@main
+    with:
+      kernel-version: '6.6'
+      ksu-version: 'next'
+      additional-kconfig: |
+        CONFIG_LOCALVERSION="-Samsung-S24U"
+        CONFIG_KSU_SUSFS=y
+        CONFIG_SUSFS_SPOOF_PROTO=y
