@@ -2,10 +2,13 @@ name: BUILD KERNEL WILD
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   call-wild-build:
     uses: WildKernels/GKI_KernelSU_SUSFS/.github/workflows/build.yml@main
     with:
-      kernel_version: '6.6.50-android15-2024-11' # Versão estável para GKI 6.6
-      feature_set: 'KSUN,SUSFS,BBG'              # Ativa KernelSU-Next, SUSFS e Baseband Guard
-      ksu_commit: 'next'                         # Usa a versão Next do KernelSU
+      kernel_version: '6.6.50-android15-2024-11'
+      feature_set: 'KSUN,SUSFS,BBG'
+      ksu_commit: 'next'
