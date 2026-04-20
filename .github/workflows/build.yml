@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build Kernel
-        uses: tiann/KernelSU-Action@main
+        uses: xiaoleGun/KernelSU_Action@main
         with:
           kernel-version: '6.6'
           ksu-version: 'next'
